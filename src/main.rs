@@ -1,7 +1,7 @@
 use topcoat::{
     Result,
     router::{module_router, page},
-    view::{View, component, view},
+    view::{component, view},
 };
 
 #[tokio::main]
@@ -10,18 +10,18 @@ async fn main() {
 }
 
 #[page]
-async fn home() -> Result<impl View> {
-    Ok(view! {
+async fn home() -> Result {
+    view! {
         <!DOCTYPE html>
         <html>
             <body>
                 hello(name: "World")
             </body>
         </html>
-    })
+    }
 }
 
 #[component]
-async fn hello(name: &str) -> Result<impl View> {
-    Ok(view! { <h1>"Hello, " (name) "!"</h1> })
+async fn hello(name: &str) -> Result {
+    view! { <h1>"Hello, " (name) "!"</h1> }
 }
